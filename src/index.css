@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* 슬라이드 애니메이션 클래스 추가 */
+/* 트랜지션 컨테이너 스타일 */
+.transition-container {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh; /* 컨텐츠에 따라 조정 */
+}
+
+/* 페이지 기본 스타일 */
+.page {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* 페이지 진입 애니메이션 */
+.page-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* 페이지 퇴장 애니메이션 */
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* 다른 효과 예시: 페이드 효과 */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* 다른 효과 예시: 줌 효과 */
+.zoom-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.zoom-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.zoom-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.zoom-exit-active {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 300ms, transform 300ms;
+}
