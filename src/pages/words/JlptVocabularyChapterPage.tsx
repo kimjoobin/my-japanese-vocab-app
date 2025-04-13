@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { useNavigate, useParams } from 'react-router';
 import axiosInstance from '../../api';
+import PageTransition from '../../components/common/PageTransition';
 
 const JlptVocabularyChapterPage = () => {
   const { darkMode } = useTheme();
@@ -53,28 +54,30 @@ const JlptVocabularyChapterPage = () => {
   };
 
   return (
-    <div className={`p-6 rounded-xl shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-      {/* 레벨 정보 */}
-      <div className={`mb-4 p-3 rounded-lg ${fetchLevelHeader(level)} text-white`}>
-        <div className="mb-1 flex justify-between items-center">
-          <h3 className="text-lg font-bold">{level} 단어 목록</h3>
-          <p className='text-lg font-bold'>{wordCount}개</p>
+    <PageTransition>
+      <div className={`p-6 rounded-xl shadow-md ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        {/* 레벨 정보 */}
+        <div className={`mb-4 p-3 rounded-lg ${fetchLevelHeader(level)} text-white`}>
+          <div className="mb-1 flex justify-between items-center">
+            <h3 className="text-lg font-bold">{level} 단어 목록</h3>
+            <p className='text-lg font-bold'>{wordCount}개</p>
+          </div>
+        </div>
+
+        {/* chapter 목록 */}
+        <div className='space-y-3'>
+          {chapterList.map((item) => (
+            <div 
+              key={item}
+              className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} flex items-center justify-center `}
+              onClick={() => navigate(`/jlpt/${level}/${item}`)}
+            >
+              <span className='font-bold'>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
-
-      {/* chapter 목록 */}
-      <div className='space-y-3'>
-        {chapterList.map((item) => (
-          <div 
-            key={item}
-            className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'} flex items-center justify-center `}
-            onClick={() => navigate(`/jlpt/${level}/${item}`)}
-          >
-            <span className='font-bold'>{item}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    </PageTransition>
   );
 }
 

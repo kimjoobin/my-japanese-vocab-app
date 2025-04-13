@@ -1,7 +1,9 @@
 import axios, { AxiosInstance } from "axios";
 
+// const API_URL = 'http://localhost:8080/api';
+
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'https://a479-61-101-109-119.ngrok-free.app/api',
+  baseURL: 'http://localhost:8080/api',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -12,7 +14,6 @@ const axiosInstance: AxiosInstance = axios.create({
 // 요청 인터셉터
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log('Request:', config);
     return config;
   },
   (error) => {
@@ -24,7 +25,6 @@ axiosInstance.interceptors.request.use(
 // 응답 인터셉터
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log('Response:', response);
     return response;
   },
   (error) => {

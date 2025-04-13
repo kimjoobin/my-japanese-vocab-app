@@ -82,3 +82,54 @@
   transform: scale(1.1);
   transition: opacity 300ms, transform 300ms;
 }
+
+
+/* 후리가나 관련 스타일 */
+.furigana-text {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Ruby 태그 스타일링 */
+ruby {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* rt (후리가나 텍스트) 스타일링 */
+rt {
+  font-size: 0.6em;
+  color: #666;
+  opacity: 0.9;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 다크 모드에서 rt 색상 조정 */
+.dark rt {
+  color: #aaa;
+}
+
+/* 모바일 화면에서 후리가나 스타일 조정 */
+@media (max-width: 640px) {
+  .furigana-text {
+    font-size: 0.95rem;
+  }
+  
+  rt {
+    font-size: 0.55em;
+  }
+}
+
+/* 가로 스크롤 숨기기 (이미 코드에 있는 클래스) */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}

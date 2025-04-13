@@ -14,22 +14,22 @@ const Main: React.FC = () => {
       <Header />
 
       {/* Main Content */}
-      <AnimatePresence mode="wait">
-        <motion.main 
-          key={location.pathname}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ 
-            type: "tween", 
-            ease: "easeInOut", 
-            duration: 0.5 
-          }}
-          className="container mx-auto px-4 py-6"
-        >
-          <Outlet />
-        </motion.main>
-      </AnimatePresence>
+      <motion.div 
+        key={location.pathname}
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ 
+          type: "tween", 
+          ease: "easeInOut", 
+          duration: 0.5 
+        }}
+        className="container mx-auto px-4 py-6"
+      >
+        <Outlet />
+      </motion.div>
+      {/* <AnimatePresence mode="wait">
+      </AnimatePresence> */}
     </div>
   );
 }

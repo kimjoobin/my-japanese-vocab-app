@@ -4,6 +4,7 @@ import { ChevronDown, ChevronLeft, ChevronUp, Star, Volume2 } from 'lucide-react
 import { useNavigate, useParams } from 'react-router';
 import axiosInstance from '../../api';
 import SearchBar from '../../components/words/SearchBar';
+import Furigana from '../../components/common/Furigana';
 
 const JlptVocabularyPage = () => {
   const { darkMode } = useTheme();
@@ -17,8 +18,6 @@ const JlptVocabularyPage = () => {
       const response = await axiosInstance.get(`/word/jlpt/${chapter}/${level}`);
       if (response.status === 200) {
         setWordList(response.data);
-        console.log(response.data);
-
       }
     } catch (error) {
       console.log(error);
@@ -50,9 +49,9 @@ const JlptVocabularyPage = () => {
       </div>
 
       {/* 검색 바 */}
-      {/* <div className="px-4 py-3">
-        <SearchBar />
-      </div> */}
+      <div className="px-4 py-3">
+        {/* <SearchBar /> */}
+      </div>
 
       {/* 단어 목록 */}
       <div className="px-4 pb-4">
@@ -60,8 +59,7 @@ const JlptVocabularyPage = () => {
           wordList.map((item) => (
             <div
               key={item.wordId}
-              className={`mb-3 rounded-lg overflow-hidden ${darkMode ? 'bg-gray-700' : 'bg-gray-50'
-                }`}
+              className={`mb-3 rounded-lg overflow-hidden ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}
             >
               {/* 단어 헤더 섹션 */}
               <div className="flex items-center justify-between px-4 py-3">
@@ -70,14 +68,17 @@ const JlptVocabularyPage = () => {
                   <span className="text-sm text-gray-500 dark:text-gray-400">{item.word}</span>
                 </div>
                 <div className="flex items-center gap-2">
+                  {/* 즐겨찾기 icon */}
                   <button
                     className={`${item.favorite ? 'text-yellow-400' : 'text-gray-400'}`}
                   >
                     <Star size={18} fill={item.favorite ? "currentColor" : "none"} />
                   </button>
+                  {/* 음성 tts icon */}
                   <button className="text-gray-400">
                     <Volume2 size={18} />
                   </button>
+                  {/* 예시문 toggle cion */}
                   <button
                     onClick={() => toggleExample(item.wordId)}
                     className="focus:outline-none"
@@ -107,11 +108,17 @@ const JlptVocabularyPage = () => {
                       className={`mb-3 ${exIndex > 0 ? 'pt-2 border-t border-gray-200 dark:border-gray-700' : ''}`}
                     >
                       {/* 텍스트가 넘칠 경우 텍스트 줄임 처리 */}
-                      <div className="overflow-x-auto pb-1 hide-scrollbar">
+                      {/* <div className="overflow-x-auto pb-1 hide-scrollbar">
                         <p className="font-medium text-sm">{example.exampleKanji}</p>
                       </div>
                       <div className="overflow-x-auto pb-1 hide-scrollbar">
                         <p className="text-sm text-gray-500 dark:text-gray-400">{example.exampleHiragana}</p>
+                      </div> */}
+                      <div className="overflow-x-auto pb-1 hide-scrollbar">
+                        <Furigana 
+                          kanji={example.exampleKanji} 
+                          hiragana={example.exampleHiragana}
+                        />
                       </div>
                       <div className="overflow-x-auto pb-1 hide-scrollbar">
                         <p className="text-sm">{example.exampleKoTranslate}</p>

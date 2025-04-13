@@ -11,7 +11,7 @@ export default defineConfig({
   server: {
     // ngrok URL을 허용 목록에 추가
     allowedHosts: [
-      'd33f-61-101-109-119.ngrok-free.app',
+      '3a65-61-101-109-119.ngrok-free.app',
       'localhost'
     ]
   }
