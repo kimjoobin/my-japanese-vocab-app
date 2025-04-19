@@ -87,40 +87,52 @@
 /* 후리가나 관련 스타일 */
 .furigana-text {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 2.2; /* 줄 간격 넓게 설정 */
+  word-break: keep-all; /* 단어별로 줄바꿈 */
+  overflow-wrap: break-word;
 }
 
 /* Ruby 태그 스타일링 */
 ruby {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-block; /* inline-flex에서 변경 */
+  vertical-align: bottom;
+  margin-bottom: 0.1em;
+  position: relative;
   text-align: center;
-  line-height: 1.2;
 }
 
-/* rt (후리가나 텍스트) 스타일링 */
+/* rt (후리가나 텍스트) 스타일링 - 크기 키우고 위치 조정 */
 rt {
-  font-size: 0.6em;
+  font-size: 0.75em; /* 0.6em에서 크기 증가 */
   color: #666;
-  opacity: 0.9;
+  opacity: 0.95;
   text-align: center;
   white-space: nowrap;
+  display: block;
+  position: absolute;
+  top: -1.2em; /* 한자 위에 위치하도록 설정 */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+  font-weight: 500; /* 약간 굵게 */
 }
 
 /* 다크 모드에서 rt 색상 조정 */
 .dark rt {
-  color: #aaa;
+  color: #ccc; /* 더 밝게 조정 */
 }
 
 /* 모바일 화면에서 후리가나 스타일 조정 */
 @media (max-width: 640px) {
   .furigana-text {
-    font-size: 0.95rem;
+    font-size: 1rem; /* 크기 약간 키움 */
+    line-height: 2.4; /* 라인 높이 증가 */
   }
   
   rt {
-    font-size: 0.55em;
+    font-size: 0.8em; /* 모바일에서도 잘 보이도록 키움 */
+    top: -1.25em;
   }
 }
 

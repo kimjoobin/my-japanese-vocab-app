@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/layout/Header';
 import { useTheme } from '../../context/ThemeContext';
 import { Outlet, useLocation } from 'react-router';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Main: React.FC = () => {
   const { darkMode } = useTheme();

@@ -17,13 +17,6 @@ const JPLTSection: React.FC = () => {
       <h2 className="text-xl font-bold mb-4">JLPT 단어</h2>
       <div className="grid gap-4">
         {['N5', 'N4', 'N3', 'N2', 'N1'].map((level) => (
-          // <div
-          //   key={level}
-          //   className={`flex items-center justify-center h-16 rounded-lg ${level === 'N5'
-          //     ? `${darkMode ? 'bg-blue-700' : 'bg-blue-500'} text-white`
-          //     : `${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`
-          //     }`}
-          // >
           <div
             key={level}
             className={`p-4 flex items-center justify-center rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}

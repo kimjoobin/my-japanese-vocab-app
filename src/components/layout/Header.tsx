@@ -1,4 +1,4 @@
-import { Home, Moon, Settings, Star, Sun } from "lucide-react";
+import { Home, Moon, Search, Settings, Star, Sun } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import { useLocation, useNavigate } from "react-router";
 
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   return (
     <header className={`px-4 py-3 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md`}>
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">일본어 단어장</h1>
+        <h1 className="text-xl font-bold">단어장</h1>
         <div className="flex items-center space-x-4">
           {location.pathname !== '/' ? <button
             onClick={() => navigate('/')}
@@ -20,6 +20,10 @@ const Header: React.FC = () => {
           </button>
             : <></>
           }
+
+          <button className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+            <Search size={18}/>
+          </button>
 
           <button
             onClick={toggleDarkMode}

@@ -3,8 +3,13 @@ import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../api";
 import { useNavigate } from "react-router";
+import { JLPTWordResponseDto } from "../../types/vocabulary";
 
-const TodayWord: React.FC = () => {
+interface TodayWordProps {
+  todayWord: JLPTWordResponseDto[];
+}
+
+const TodayWord: React.FC<TodayWordProps> = () => {
   const { darkMode } = useTheme();
   const navigate = useNavigate();
   const [todayWord, setTodayWord] = useState([]);
@@ -55,23 +60,6 @@ const TodayWord: React.FC = () => {
             <p className="mt-1 text-base">{todayWord.meaning}</p>
           </div>
         </div>
-        {/* {todayWord.map((item, index) => (
-          <div
-            key={index}
-            className={`relative p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}
-          >
-            <button className="absolute top-3 right-3 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600">
-              <Star size={20} />
-            </button>
-            <div className="p-2">
-              <div className="flex items-center gap-2">
-                <p className="font-bold text-2xl">{item.hiragana}</p>
-                <p className="text-base text-gray-500 dark:text-gray-400">{item.word}</p>
-              </div>
-              <p className="mt-1 text-base">{item.meaning}</p>
-            </div>
-          </div>
-        ))} */}
       </div>
     </div>
   );
