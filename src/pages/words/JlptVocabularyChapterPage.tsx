@@ -57,8 +57,8 @@ const JlptVocabularyChapterPage = () => {
       {/* 레벨 정보 */}
       <div className={`mb-4 p-3 rounded-lg ${fetchLevelHeader(level)} text-white`}>
         <div className="mb-1 flex justify-between items-center">
-          <h3 className="text-lg font-bold">입문 단어</h3>
-          {/* <p className='text-lg font-bold'>{wordCount}개</p> */}
+          <h3 className="text-lg font-bold">{level} 단어</h3>
+          <p className='text-lg font-bold'>{wordCount}개</p>
         </div>
       </div>
 

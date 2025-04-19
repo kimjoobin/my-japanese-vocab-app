@@ -3,16 +3,23 @@ import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../api";
 import { useNavigate } from "react-router";
-import { JLPTWordResponseDto } from "../../types/vocabulary";
 
 interface TodayWordProps {
-  todayWord: JLPTWordResponseDto[];
+  wordId: number;
+  hiragana: string;
+  word: string;
+  meaning: string;
 }
 
 const TodayWord: React.FC<TodayWordProps> = () => {
   const { darkMode } = useTheme();
   const navigate = useNavigate();
-  const [todayWord, setTodayWord] = useState([]);
+  const [todayWord, setTodayWord] = useState({
+    wordId: 0,
+    hiragana: '',
+    word: '',
+    meaning: ''
+  });
 
   useEffect(() => {
     fetchData();

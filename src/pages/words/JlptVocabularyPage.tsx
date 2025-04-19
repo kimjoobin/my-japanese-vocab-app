@@ -23,7 +23,7 @@ const JlptVocabularyPage = () => {
   // 즐겨찾기 토글 핸들러
   const handleToggleFavorite = (wordId: number) => {
     const updatedWords = wordList.map(word => 
-      word.wordId === wordId ? { ...word, favorite: !word.favorite } : word
+      word.wordId === wordId ? { ...word, favorite: !word.isFavorite } : word
     );
     setWordList(updatedWords);
     // API를 통한 즐겨찾기 업데이트 로직이 필요하다면 여기에 구현
